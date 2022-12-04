@@ -1,0 +1,296 @@
+/* reset and custom style classes */
+/*
+1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+/*
+2. Remove default margin
+*/
+* {
+    margin: 0;
+}
+/*
+3. Allow percentage-based heights in the application
+*/
+html, body {
+    min-height: 100%;
+    font-size: 12px;
+    font-family: var(--ff-base);
+}
+/*
+Typographic tweaks!
+4. Add accessible line-height
+5. Improve text rendering
+*/
+body {
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--ff-base);
+}
+/*
+6. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+/*
+7. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+    font: inherit;
+}
+/*
+8. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+/*
+9. Create a root stacking context
+*/
+#root, #__next {
+    isolation: isolate;
+}
+
+
+/* Root Styles */
+:root {
+    --clr-desat-blu: hsl(238, 29%, 16%);
+
+    --clr-soft-red: hsl(14, 88%, 65%);
+    --clr-soft-violet: hsl(273, 75%, 66%);
+    --clr-soft-blue: hsl(240, 73%, 65%);
+
+    --clr-vry-drk-gry-blu: hsl(237, 12%, 33%);
+    --clr-drk-gry-blu: hsl(240, 6%, 50%);
+    --clr-lght-gry-blu: hsl(240, 5%, 91%);
+
+    --ff-base: 'Kumbh Sans', sans-serif;
+
+    --transition: 300ms ease-in-out;
+
+    --fw-reg: 400;
+    --fw-bold: 700;
+}
+
+/* general styles */
+
+.grid {
+    display: grid;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.center_by_flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center_by_grid {
+    display: grid;
+    place-content: center;
+}
+
+.inactive {
+    display: none;
+}
+
+.opacity {
+    opacity: 1;
+}
+
+/* body */
+
+body {
+    background: linear-gradient(hsl(273, 75%, 66%), hsl(240, 73%, 65%));
+    min-height: 100vh;
+    padding: 10em 2em 2em;
+}
+
+/* card styling */
+.main_container {
+    background-color: var(--clr-lght-gry-blu);
+    border-radius: 2rem;
+    min-width: 25rem;
+
+    justify-content: center;
+}
+
+/* positioning mobile image */
+.img_container {
+    position: relative;
+    width: 20rem;
+}
+
+.img {
+    position: absolute;
+    top: -9em;
+}
+
+/* faqs styling */
+.info_container {
+    margin-top: 3em;
+    margin-bottom: 4em;
+
+    padding-left: 2em;
+    padding-right: 2em;
+    
+    width: 100%;
+}
+
+.heading_container {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: var(--fw-bold)
+}
+
+.faqs_container {
+    gap: 10px;
+    padding-top: 2em;
+}
+
+.faq_container {
+    padding-bottom: 1em;
+    border-bottom: 1px solid rgba(120, 120, 135, 0.3);
+
+    position: relative;
+}
+
+.faq_container:hover {
+    cursor: pointer;
+}
+
+.faq_container:hover > .question {
+    color: var(--clr-soft-red);
+}
+
+.question {
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--clr-drk-gry-blu);
+    font-weight: var(--fw-bold);
+    opacity: .8;
+
+}
+
+/* position made absolute to create a smoother reveal transition */
+.answer {
+    padding-top: .5em;
+    position: absolute;
+    top: 1.5em;
+    opacity: 0;
+}
+
+/* animation styling */
+.arrow, .question {
+    transition: 300ms ease-in;
+}
+
+.arrow_rotate {
+    transform: rotate(180deg);
+}
+
+.font_bold {
+    font-weight: var(--fw-bold);
+    color: var(--clr-desat-blu);
+}
+
+.border_positioning {
+    padding-bottom: 4.5em;
+}
+
+.reveal {
+    animation: reveal 300ms ease 300ms normal forwards;
+}
+
+@keyframes reveal {
+    to {
+        opacity: 1;
+    }
+}
+
+@media screen and (min-width: 900px){
+
+    /* body */
+    body {
+        padding: 0;
+    }
+
+    /* card styling */
+    .main_container {
+       width: 63rem;
+       align-items: center;
+       justify-content: space-between;
+       padding-left: 0;
+    }
+
+    /* faqs styling */
+    .info_container {
+        max-width: 27rem;
+        margin-right: 5em;
+        margin-top: 7em;
+        margin-bottom: 5em;
+        padding: 0;
+    }
+
+    .heading_container {
+        text-align: left;
+    }
+
+    /* image styling */
+    .imges_container {
+        width: 30rem;
+        height: 30rem;
+        position: relative;
+    }
+
+    .img_container {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .img {
+        position: absolute;
+        height: 25rem;  
+        width: 30rem; 
+        top: 2em;
+        right: 5em;
+    }
+
+    .box {
+        position: absolute;
+        top: 10em;
+        right: 22em;
+    }
+
+    .shadow_container {
+        display: none;
+        position: absolute;
+        background-color: lightcoral;
+        top: 0;
+    }
+
+    .box {
+        display: block;
+        position: absolute;
+        top: 12rem;
+        right: 24rem;
+        width: 12rem;
+        height: 12rem;
+    }
+}
